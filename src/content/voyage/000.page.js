@@ -45,6 +45,13 @@ const cv_page000 = {
         ]
       },
 
+      {
+        type: "links",
+        items: [
+          { label: "Explore System Map", to: "system.000" },
+        ]
+      },
+
     ],
   };
   
