@@ -14,6 +14,7 @@ const page001 = {
         items: [
           { label: "[001] Job Board", to: "200000.000" },
           { label: "[002] Map", to: "300000.000" },
+          { label: "[003] Thread Archive", to: "thread.000" },
         ]
       },
       { type: "h2", text: "More information"},
