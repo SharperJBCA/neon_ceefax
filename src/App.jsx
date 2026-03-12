@@ -1,13 +1,56 @@
-import React from "react";
+import { useState } from "react";
 import "./App.css";
-import Terminal from "./components/Terminal";
 import "./index.css";
 
-const App = (props) => {
-  const { notes } = props
+import Landing from "./components/Landing";
+import Help from "./components/Help";
+import NotFound from "./components/NotFound"; 
+import Header from "./components/Header"; 
+import BasicPage from "./components/BasicPage";
+import CosmicVoyage from "./components/CosmicVoyage";
+import NeonCannons from "./components/NeonCannons";
+
+import page001 from "./content/100000/001.page";
+
+import voyagePages from "./content/voyage/000.page";
+import neoncnPages from "./content/neoncn/000.page";
+
+function App() {
+  const [pageCode, setPageCode] = useState("100000.000");
+  const [headerActive, setHeaderActive] = useState(false);
+
+  const register = {
+    "100000.000": { Component: Landing, content: null },
+    "100000.001": { Component: BasicPage, content: page001 },
+    "neoncn.000": { Component: NeonCannons, content: neoncnPages["landing"]},
+    "voyage.000": { Component: CosmicVoyage, content: voyagePages["landing"]},
+    "100002.001": { Component: CosmicVoyage, content: voyagePages["about"]},
+    "100001.000": { Component: Help, content: null },
+    "000000.000": { Component: NotFound, content: null}
+  };
+
+  const entry = register[pageCode] ?? register["000000.000"];
+  const Component = entry.Component;
+  const content = entry.content;
 
   return (
-    <Terminal />
-  )
+    <div className="app">
+      <Header
+        pageCode={pageCode}
+        setPageCode={setPageCode}
+        content={content}
+        active={headerActive}
+        onToggle={() => setHeaderActive((a) => !a)}
+      />
+    <div className="main crt flicker">
+    <Component
+      pageCode={pageCode}
+      setPageCode={setPageCode}
+      content={content}
+    />
+    </div>
+    </div>
+  );
 }
-export default App
+
+export default App;

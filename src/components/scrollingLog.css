@@ -1,0 +1,27 @@
+.log {
+    height: 220px;
+    width: 320px;
+    overflow: hidden;
+    border: 0px solid rgba(255,255,255,1.0);
+    border-radius: 12px;
+    padding: 12px;
+    background: rgba(0,0,0,0.2);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    color: rgba(255,255,255,0.85);
+    display: grid;
+    gap: 8px;
+}
+  
+.log__line {
+    height: 18px;
+    line-height: 18px;
+    white-space: nowrap;
+    color: #c8c8c8;
+    opacity: 0.9;
+  }
+  
+  .log__line.highlight {
+    color: #000;
+    background-color: #c8c8c8;
+  }
+  
