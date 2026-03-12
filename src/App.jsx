@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import BasicPage from "./components/BasicPage";
 import CosmicVoyage from "./components/CosmicVoyage";
 import NeonCannons from "./components/NeonCannons";
+import SystemPage from "./components/SystemPage";
 
 import page001 from "./content/100000/001.page";
 
@@ -26,6 +27,10 @@ function App() {
     "voyage.000": { Component: CosmicVoyage, content: voyagePages["landing"]},
     "100002.001": { Component: CosmicVoyage, content: voyagePages["about"]},
     "100001.000": { Component: Help, content: null },
+    "system.000": { Component: SystemPage, content: null },
+    "system.aegir": { Component: SystemPage, content: null },
+    "system.centis": { Component: SystemPage, content: null },
+    "system.lo": { Component: SystemPage, content: null },
     "000000.000": { Component: NotFound, content: null}
   };
 
