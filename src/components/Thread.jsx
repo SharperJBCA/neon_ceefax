@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { ReactNode, useState, useRef, useEffect } from "react";
+import {motion, useInView, useAnimation} from "motion/react";
 import "./Thread.css";
 
 const embroideryImages = [
@@ -7,9 +8,40 @@ const embroideryImages = [
   { src: "/thread_images/embroidery03.svg", alt: "Celestial moon and stars embroidery in a wooden hoop" },
 ];
 
-function Thread() {
+export const Reveal = ({ children, width = "fit-content" }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, {once: true});
+
+  const mainControls = useAnimation() 
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView]);
+
+  return (
+    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 75 },
+          visible: { opacity: 1, y: 0 },
+        }}
+        initial="hidden"
+        animate={mainControls}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+};
+
+function Thread({ content, setPageCode }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStartX, setTouchStartX] = useState(null);
+
+  const blocks = content?.blocks ?? []; 
 
   const goNext = () => {
     setCurrentIndex((prev) => (prev + 1) % embroideryImages.length);
@@ -42,62 +74,43 @@ function Thread() {
   return (
     <div className="thread-page">
       <header className="thread-page__header">
+        <Reveal>
         <h1 className="thread-page__title">Thread Archive: Embroidery Exchange</h1>
+        </Reveal>
+
+        <Reveal>
         <p className="thread-page__intro">
           Signal-safe scans from remote crews preserving old-world embroidery.
           Browse hand-stitched motifs and experimental neon-thread studies.
         </p>
+        </Reveal>
       </header>
 
-      <section
-        className="thread-carousel"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <div className="thread-carousel__viewport">
-          <img
-            src={embroideryImages[currentIndex].src}
-            alt={embroideryImages[currentIndex].alt}
-            className="thread-carousel__image"
-          />
-        </div>
+      {blocks.map((entry, i) => (
+        <Reveal>
+          <section className="thread-entry">
+            <div className="thread-entry__separator" />
+            
+            <div className="thread-entry__content">
+              <div className="thread-entry__image-wrap">
+                <img
+                  src={entry.filename}
+                  alt={entry.alt}
+                  className="thread-entry__image"
+                />
+              </div>
 
-        <div className="thread-carousel__controls">
-          <button
-            type="button"
-            className="thread-carousel__button"
-            onClick={goPrev}
-            aria-label="Show previous embroidery image"
-          >
-            ◀ Prev
-          </button>
-          <span className="thread-carousel__counter" aria-live="polite">
-            {currentIndex + 1} / {embroideryImages.length}
-          </span>
-          <button
-            type="button"
-            className="thread-carousel__button"
-            onClick={goNext}
-            aria-label="Show next embroidery image"
-          >
-            Next ▶
-          </button>
-        </div>
+              <div className="thread-entry__text">
+                <h2 className="thread-entry__title">{entry.title}</h2>
+                <p className="thread-entry__description">
+                  {entry.description}
+                </p>
+              </div>
+            </div>
+          </section>
+        </Reveal>
+      ))}
 
-        <div className="thread-carousel__thumbs" role="tablist" aria-label="Embroidery image selection">
-          {embroideryImages.map((image, index) => (
-            <button
-              key={image.src}
-              type="button"
-              className={`thread-carousel__thumb ${index === currentIndex ? "is-active" : ""}`}
-              onClick={() => setCurrentIndex(index)}
-              aria-label={`View image ${index + 1}: ${image.alt}`}
-            >
-              <img src={image.src} alt="" aria-hidden="true" />
-            </button>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }

@@ -27,8 +27,6 @@ function Header({pageCode, setPageCode, content, onToggle, active}) {
                     <span className="tt-buffer">{buffer.padEnd(6, "•")}</span>
                     <input 
                         className="tt-input"
-                        inputMode="numeric"
-                        pattern="[0-9]*"
                         maxLength={6}
                         value={buffer}
                         onChange={handleChange}

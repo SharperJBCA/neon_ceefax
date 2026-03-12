@@ -16,6 +16,7 @@ import page001 from "./content/100000/001.page";
 
 import voyagePages from "./content/voyage/000.page";
 import neoncnPages from "./content/neoncn/000.page";
+import thread_entries from "./content/threads/thread_entries";
 
 function App() {
   const [pageCode, setPageCode] = useState("100000.000");
@@ -32,7 +33,7 @@ function App() {
     "system.aegir": { Component: SystemPage, content: null },
     "system.centis": { Component: SystemPage, content: null },
     "system.lo": { Component: SystemPage, content: null },
-    "thread.000": { Component: Thread, content: null },
+    "thread.000": { Component: Thread, content: thread_entries },
     "000000.000": { Component: NotFound, content: null}
   };
 

@@ -5,15 +5,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "dev": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
+    "motion": "^12.36.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

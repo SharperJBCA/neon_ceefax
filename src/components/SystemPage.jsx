@@ -50,7 +50,7 @@ function SystemPage({ pageCode, setPageCode }) {
         <p>Select a highlighted world to inspect its full planetary record.</p>
 
         <svg viewBox="0 0 850 500" className="system-map" role="img" aria-label="System map with selectable planets">
-          <image href="public/planets.svg" x="0" y="0" width="800" height="500" />
+          <image href="./planets.svg" x="0" y="0" width="800" height="500" />
 
           {PLANET_HOTSPOTS.map((planet) => (
             <g key={planet.id}>
