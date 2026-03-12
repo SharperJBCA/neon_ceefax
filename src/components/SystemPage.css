@@ -1,0 +1,44 @@
+.system-page {
+  min-height: calc(100vh - 56px);
+  padding: 24px;
+  color: #d6ffd8;
+  background: #020;
+}
+
+.system-overview,
+.system-detail {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.system-map {
+  width: min(100%, 1100px);
+  margin: 20px auto 0;
+  display: block;
+}
+
+.system-detail-card {
+  width: min(100%, 520px);
+  border: 2px solid #9dfca3;
+  padding: 10px;
+  margin: 16px 0;
+  background: #000;
+}
+
+.system-detail-card img {
+  width: 100%;
+  display: block;
+}
+
+.system-back {
+  border: 1px solid #9dfca3;
+  color: #d6ffd8;
+  background: transparent;
+  padding: 8px 10px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.system-page ul {
+  margin: 8px 0 20px 22px;
+}
