@@ -10,6 +10,7 @@ import BasicPage from "./components/BasicPage";
 import CosmicVoyage from "./components/CosmicVoyage";
 import NeonCannons from "./components/NeonCannons";
 import SystemPage from "./components/SystemPage";
+import Thread from "./components/Thread";
 
 import page001 from "./content/100000/001.page";
 
@@ -31,6 +32,7 @@ function App() {
     "system.aegir": { Component: SystemPage, content: null },
     "system.centis": { Component: SystemPage, content: null },
     "system.lo": { Component: SystemPage, content: null },
+    "thread.000": { Component: Thread, content: null },
     "000000.000": { Component: NotFound, content: null}
   };
 
