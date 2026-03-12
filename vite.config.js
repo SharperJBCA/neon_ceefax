@@ -6,5 +6,5 @@ const isGitHubPagesBuild = process.env.GITHUB_PAGES === 'true' || process.env.GI
 
 export default defineConfig({
   plugins: [react()],
-  base: "/neon_ceefax",
+  base: "/neon_ceefax/",
 })
