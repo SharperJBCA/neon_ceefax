@@ -2,7 +2,7 @@ export const PLANETS = {
   aegir: {
     id: "aegir",
     name: "Aegir",
-    image: "/planets.svg",
+    image: "public/planets.svg",
     location: "Inner orbital lane",
     climate: "Cold oceanic super-Earth",
     gravity: "1.14g",
@@ -18,7 +18,7 @@ export const PLANETS = {
   centis: {
     id: "centis",
     name: "Centis",
-    image: "/planets.svg",
+    image: "public/planets.svg",
     location: "Primary mid-orbit settlement",
     climate: "Temperate megacontinent world",
     gravity: "0.92g",
@@ -34,7 +34,7 @@ export const PLANETS = {
   lo: {
     id: "lo",
     name: "Lo",
-    image: "/planets.svg",
+    image: "public/planets.svg",
     location: "Outer rocky belt",
     climate: "Dry volcanic moon",
     gravity: "0.38g",
@@ -50,7 +50,7 @@ export const PLANETS = {
 };
 
 export const PLANET_HOTSPOTS = [
-  { id: "aegir", cx: "67.5", cy: "175", r: "65", labelImage: "/aegir_text.svg", labelX: "0", labelY: "40" },
-  { id: "centis", cx: "510.5", cy: "250", r: "150", labelImage: "/centis_text.svg", labelX: "470", labelY: "30" },
-  { id: "lo", cx: "755", cy: "230", r: "45", labelImage: "/lo_text.svg", labelX: "625", labelY: "120" },
+  { id: "aegir", cx: "67.5", cy: "175", r: "65", labelImage: "public/aegir_text.svg", labelX: "0", labelY: "40" },
+  { id: "centis", cx: "510.5", cy: "250", r: "150", labelImage: "public/centis_text.svg", labelX: "470", labelY: "30" },
+  { id: "lo", cx: "755", cy: "230", r: "45", labelImage: "public/lo_text.svg", labelX: "625", labelY: "120" },
 ];
