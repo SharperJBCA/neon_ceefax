@@ -14,10 +14,10 @@ function Header({ pageCode, setPageCode, content, onToggle, active }) {
     }, [active])
 
     function handleChange(e) {
-        const digitsOnly = e.target.value.replace(/\D/g, "").slice(0, 6)
-        setBuffer(digitsOnly)
-        if (digitsOnly.length === 6) {
-            const fullPath = digitsOnly + '.000'
+        const value = e.target.value.slice(0, 6)
+        setBuffer(value)
+        if (value.length === 6) {
+            const fullPath = value + '.000'
             setPageCode(fullPath)
             setBuffer("")
             onToggle()
@@ -25,7 +25,7 @@ function Header({ pageCode, setPageCode, content, onToggle, active }) {
     }
 
     function handleKeyDown(e) {
-        if (e.key === 'Enter' && buffer.length === 6) {
+        if (e.key === 'Enter' && buffer.length > 0) {
             const fullPath = buffer + '.000'
             setPageCode(fullPath)
             setBuffer("")
