@@ -5,6 +5,15 @@
   background: #020;
 }
 
+.test-button {
+  background: url("/planets/lo_planet.svg") no-repeat center center;
+  background-size: contain;
+  width: 100px;
+  height: 100px;
+  border: none;
+  padding: 0;
+}
+
 .system-overview,
 .system-detail {
   max-width: 1000px;

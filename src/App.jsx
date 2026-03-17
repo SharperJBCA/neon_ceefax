@@ -19,7 +19,7 @@ import neoncnPages from "./content/neoncn/000.page";
 import thread_entries from "./content/threads/thread_entries";
 
 function App() {
-  const [pageCode, setPageCode] = useState("100000.000");
+  const [pageCode, setPageCode] = useState("system.000");
   const [headerActive, setHeaderActive] = useState(false);
 
   const register = {
