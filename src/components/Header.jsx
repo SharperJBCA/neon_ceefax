@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-function Header({ pageCode, setPageCode, content, onToggle, active }) {
+function Header({ pageCode, setPageCode, content, onToggle, active, user, profile, role }) {
 
     const [buffer, setBuffer] = useState("")
     const inputRef = useRef(null)
@@ -14,7 +14,7 @@ function Header({ pageCode, setPageCode, content, onToggle, active }) {
     }, [active])
 
     function handleChange(e) {
-        const value = e.target.value.slice(0, 6)
+        const value = e.target.value.slice(0, 6).toLowerCase()
         setBuffer(value)
         if (value.length === 6) {
             const fullPath = value + '.000'
@@ -53,10 +53,28 @@ function Header({ pageCode, setPageCode, content, onToggle, active }) {
                             value={buffer}
                             onChange={handleChange}
                             onKeyDown={handleKeyDown}
+                            autoCapitalize="none"
+                            autoCorrect="off"
                         />
                     </>
                 ) : (
-                    "TAP TO TYPE"
+                    <>
+                        {user ? (
+                            <div className="tt-nav-links">
+                                <button className="tt-nav-btn" onClick={() => setPageCode("dashbd.000")}>
+                                    {profile?.display_name ?? "CREW"}
+                                </button>
+                                <button className="tt-nav-btn" onClick={() => setPageCode("gamesz.000")}>
+                                    GAMES
+                                </button>
+                            </div>
+                        ) : (
+                            <button className="tt-nav-btn" onClick={() => setPageCode("authxx.000")}>
+                                LOGIN
+                            </button>
+                        )}
+                        <span className="tt-tap-hint" onClick={onToggle}>TAP TO TYPE</span>
+                    </>
                 )}
             </div>
         </header>

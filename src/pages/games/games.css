@@ -1,0 +1,313 @@
+.games {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.games__title {
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #c8c8c8;
+  padding-bottom: 12px;
+}
+
+.games__loading,
+.games__empty {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.6;
+  font-size: 14px;
+}
+
+.games__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.games__card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #c8c8c8;
+  font: inherit;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.games__card:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.games__card.is-full {
+  border-color: rgba(255, 195, 0, 0.3);
+}
+
+.games__card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.games__card-title {
+  font-size: 15px;
+}
+
+.games__card-date {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.games__card-footer {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.games__full-tag {
+  color: rgb(255, 195, 0);
+  opacity: 1;
+}
+
+.games__create-btn {
+  display: block;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 14px;
+  padding: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.games__create-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Form */
+.games__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.games__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.games__field span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+}
+
+.games__field input,
+.games__field select,
+.games__field textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #c8c8c8;
+  font: inherit;
+  padding: 10px 12px;
+  font-size: 16px;
+}
+
+.games__field textarea {
+  resize: vertical;
+}
+
+.games__field input:focus,
+.games__field select:focus,
+.games__field textarea:focus {
+  outline: 2px solid #fff;
+  outline-offset: 1px;
+}
+
+.games__submit,
+.games__signup-btn {
+  display: block;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #c8c8c8;
+  color: #c8c8c8;
+  font: inherit;
+  padding: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.games__submit:hover,
+.games__signup-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.games__submit:disabled,
+.games__signup-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.games__cancel-btn {
+  display: block;
+  width: 100%;
+  background: rgba(255, 100, 100, 0.1);
+  border: 2px solid #ff6b6b;
+  color: #ff6b6b;
+  font: inherit;
+  padding: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.games__cancel-btn:hover {
+  background: rgba(255, 100, 100, 0.2);
+}
+
+.games__cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.games__error {
+  color: #ff6b6b;
+  font-size: 13px;
+}
+
+.games__back {
+  display: block;
+  margin-top: 20px;
+  background: none;
+  border: none;
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  opacity: 0.6;
+  padding: 0;
+}
+
+.games__back:hover {
+  opacity: 1;
+}
+
+.games__link-btn {
+  background: none;
+  border: none;
+  color: #c8c8c8;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Detail view */
+.games__detail {
+  margin-top: 20px;
+}
+
+.games__detail-info {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.games__detail-info h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.games__detail-info div {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+
+.games__detail-desc {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.games__roster {
+  margin-bottom: 16px;
+}
+
+.games__roster-title {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+
+.games__roster-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.games__roster-char {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.games__waitlist .games__roster-title {
+  color: rgb(255, 195, 0);
+}
+
+.games__waitlist .games__roster-row {
+  border-color: rgba(255, 195, 0, 0.2);
+}
+
+.games__signup-section {
+  margin-top: 16px;
+}
+
+/* Inline delete on game cards */
+.games__delete-inline {
+  margin-left: auto;
+  background: none;
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  color: #ff6b6b;
+  font: inherit;
+  font-size: 11px;
+  padding: 2px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 1;
+}
+
+.games__delete-inline:hover {
+  background: rgba(255, 100, 100, 0.1);
+}
+
+.games__delete-inline:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

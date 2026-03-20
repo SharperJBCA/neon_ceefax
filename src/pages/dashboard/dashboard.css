@@ -1,0 +1,202 @@
+.dash {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.dash__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #c8c8c8;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.dash__welcome {
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  flex: 1;
+}
+
+.dash__role {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.dash__signout {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 12px;
+  padding: 6px 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.dash__signout:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dash__loading {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.6;
+}
+
+.dash__next-game {
+  border: 2px solid #7cff7a;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.dash__next-game .dash__section-title {
+  color: #7cff7a;
+}
+
+.dash__next-game-info {
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+.dash__section {
+  margin-bottom: 28px;
+}
+
+.dash__section-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+
+.dash__empty {
+  font-size: 13px;
+  opacity: 0.5;
+  padding: 8px 0;
+}
+
+.dash__char-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.dash__char {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.dash__char.is-dead {
+  opacity: 0.5;
+}
+
+.dash__char-name {
+  flex: 1;
+  font-size: 15px;
+}
+
+.dash__char-class {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+.dash__char-games {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.dash__char-dead {
+  font-size: 11px;
+  color: #ff6b6b;
+  letter-spacing: 0.1em;
+}
+
+.dash__game-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.dash__game {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: none;
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dash__game:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dash__game.is-waitlisted {
+  border-color: rgba(255, 195, 0, 0.3);
+}
+
+.dash__waitlist-tag {
+  font-size: 11px;
+  color: rgb(255, 195, 0);
+  letter-spacing: 0.1em;
+}
+
+.dash__action {
+  background: none;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 13px;
+  padding: 10px 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: 100%;
+}
+
+.dash__action:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dash__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 20px;
+}
+
+.dash__nav button {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 12px;
+  padding: 8px 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.dash__nav button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}

@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 dist/
 assets/
+
+# Environment variables
+.env
+.env.local

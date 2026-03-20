@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="91mm"
+   height="201mm"
+   viewBox="0 0 91 201"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     style="display:none"
+     transform="translate(-64.5,-34.500002)">
+    <path
+       id="rect1"
+       style="fill:none;stroke:#ffc300;stroke-width:1;stroke-linecap:square;stroke-dasharray:none;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       d="m 65.000001,219.99999 v -30 l 5.000001,-5 h 5 v -5 L 65.000001,170 v -50 h 5.000001 v -10 h 5 V 99.999997 l 15,-14.999999 h 5 v -5 h -5 V 34.999999 H 130 v 44.999999 h -5 v 5 h 5 l 15,14.999999 V 110 h 5 v 10 h 5 v 50 l -10,9.99999 v 5 h 5 l 5,5 v 30 h -15 v 5 h 5 v 10 H 70.000002 v -10 h 10 v -5 z m 25.000001,0 v 5 H 130 v -5 h -10 v -10 l 5,-5 v -5 l -5,-5 v -10 h 5 v -5 L 115,170 v -5 -25 h -10 v 30 l -9.999998,9.99999 v 5 H 100 l 5,5 v 15 15 h -5 z" />
+  </g>
+  <g
+     id="layer2"
+     style="display:none"
+     transform="translate(-64.5,-34.500002)">
+    <path
+       id="rect2"
+       style="fill:none;stroke:#ffc300;stroke-width:0.999997;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:1"
+       d="M 75.000002,110 V 99.999997 l 15,-14.999999 H 130 l 15,14.999999 V 110 h 5 v 10 h 5 v 50 l -10,9.99999 v 5 h -20 v -5 L 115,170 v -30 h -10 v 30 l -9.999998,9.99999 v 5 h -20 v -5 L 65.000001,170 v -50 h 5.000001 v -10 z" />
+  </g>
+  <g
+     id="layer3"
+     style="display:none"
+     transform="translate(-64.5,-34.500002)">
+    <path
+       id="rect3"
+       style="display:inline;fill:none;stroke:#ffc300;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:1"
+       d="M 90.000008,35 H 130.00001 V 80 L 125,79.999998 v 5 H 95.000002 V 80 h -4.999994 z" />
+  </g>
+  <g
+     id="layer4"
+     style="display:none"
+     transform="translate(-64.5,-34.500002)">
+    <path
+       id="rect4"
+       style="display:inline;fill:none;stroke:#ffc300;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:1"
+       d="m 120,185 h 30 l 5,4.99999 V 220 h -35 v -10.00001 l 5,-5 v -5 l -5,-5 z" />
+  </g>
+  <g
+     id="layer5"
+     style="display:inline"
+     transform="translate(-64.5,-34.500002)">
+    <path
+       id="rect5"
+       style="display:inline;fill:none;stroke:#ffc300;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:1"
+       d="M 65.000001,189.99999 70.000002,185 H 100 l 5,4.99999 V 220 H 65 Z" />
+  </g>
+</svg>

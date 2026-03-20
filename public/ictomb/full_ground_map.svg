@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   sodipodi:docname="full_ground_map.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#323232"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="0.8904243"
+     inkscape:cx="438.55497"
+     inkscape:cy="691.80502"
+     inkscape:window-width="1584"
+     inkscape:window-height="911"
+     inkscape:window-x="1850"
+     inkscape:window-y="46"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="mm"
+       originx="0"
+       originy="0"
+       spacingx="0.99999998"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="ground_dull"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:0.999996;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect1"
+       width="74"
+       height="28.989614"
+       x="65.5"
+       y="180.51039"
+       inkscape:label="inner01" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:0.999991;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect2"
+       width="39.500004"
+       height="29.000017"
+       x="85.499992"
+       y="150.5"
+       inkscape:label="generator" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:0.999996;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect3"
+       width="39.000004"
+       height="29"
+       x="140.5"
+       y="180.5"
+       inkscape:label="habitat" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:1;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect4"
+       width="39.000004"
+       height="29.000002"
+       x="85.5"
+       y="120.5"
+       inkscape:label="core" />
+    <path
+       id="rect5"
+       style="fill-opacity:0.25;stroke:#c8c8c8;stroke-width:0.999996;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       d="M 40.500004,120.49999 H 84.5 V 149.5 H 54.507085 l 0.0099,5.00137 -9.033868,0.0301 V 149.5 h -4.983063 z"
+       sodipodi:nodetypes="ccccccccc"
+       inkscape:label="storage" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:0.999998;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect6"
+       width="9"
+       height="29"
+       x="30.500004"
+       y="125.5"
+       inkscape:label="stairs" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:0.999989;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect7"
+       width="34.000004"
+       height="53.999985"
+       x="30.499998"
+       y="155.49998"
+       inkscape:label="inner02" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:1;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect8"
+       width="39.000004"
+       height="29"
+       x="140.5"
+       y="120.49999"
+       inkscape:label="turbines" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:1;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect9"
+       width="13.50001"
+       height="14.000024"
+       x="125.99999"
+       y="150.5"
+       inkscape:label="lift" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:0.999997;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect10"
+       width="74.000008"
+       height="4.00001"
+       x="65.5"
+       y="210.49998"
+       inkscape:label="wall01" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:0.999999;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect11"
+       width="34"
+       height="4.0000043"
+       x="30.5"
+       y="210.49998"
+       inkscape:label="wall03" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:0.999992;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect12"
+       width="34.000008"
+       height="28.999996"
+       x="30.499998"
+       y="215.49998"
+       inkscape:label="outer03" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:0.999992;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect13"
+       width="74.000008"
+       height="29.125023"
+       x="65.5"
+       y="215.5"
+       inkscape:label="outer01" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:0.999992;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect14"
+       width="34.000008"
+       height="29.124989"
+       x="140.5"
+       y="215.49998"
+       inkscape:label="outer02" />
+    <rect
+       style="fill:#000000;fill-opacity:0.25;stroke:#c8c8c8;stroke-width:1;stroke-linecap:square;stroke-dashoffset:0.94488;stroke-opacity:0.35"
+       id="rect15"
+       width="34.000004"
+       height="4.0241637"
+       x="140.5"
+       y="210.49998"
+       inkscape:label="wall02" />
+  </g>
+</svg>

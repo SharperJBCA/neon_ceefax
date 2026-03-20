@@ -1,0 +1,231 @@
+.bottle {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.bottle__title {
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #c8c8c8;
+  padding-bottom: 12px;
+}
+
+.bottle__loading,
+.bottle__empty {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.6;
+  font-size: 14px;
+}
+
+.bottle__error {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+/* Compose toggle */
+.bottle__compose-btn {
+  display: block;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 14px;
+  padding: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.bottle__compose-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Compose form */
+.bottle__compose {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.bottle__compose-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+
+.bottle__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.bottle__field span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+}
+
+.bottle__field input,
+.bottle__field select,
+.bottle__field textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #c8c8c8;
+  font: inherit;
+  padding: 10px 12px;
+  font-size: 16px;
+}
+
+.bottle__field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.bottle__field input:focus,
+.bottle__field select:focus,
+.bottle__field textarea:focus {
+  outline: 2px solid #fff;
+  outline-offset: 1px;
+}
+
+.bottle__custom-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.bottle__custom-toggle input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.bottle__submit {
+  display: block;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #c8c8c8;
+  color: #c8c8c8;
+  font: inherit;
+  padding: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.bottle__submit:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.bottle__submit:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Message list */
+.bottle__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bottle__message {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 14px 16px;
+}
+
+.bottle__message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.bottle__author {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.bottle__author-name {
+  opacity: 1;
+  color: #c8c8c8;
+}
+
+.bottle__npc-tag {
+  font-size: 11px;
+  color: rgb(255, 195, 0);
+  margin-left: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.bottle__message-title {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.bottle__message-body {
+  font-size: 14px;
+  opacity: 0.85;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.bottle__time {
+  font-size: 11px;
+  opacity: 0.4;
+  margin-top: 8px;
+}
+
+.bottle__delete {
+  background: none;
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  color: #ff6b6b;
+  font: inherit;
+  font-size: 11px;
+  padding: 2px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+.bottle__delete:hover {
+  background: rgba(255, 100, 100, 0.1);
+}
+
+.bottle__delete:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.bottle__back {
+  display: block;
+  margin-top: 20px;
+  background: none;
+  border: none;
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  opacity: 0.6;
+  padding: 0;
+}
+
+.bottle__back:hover {
+  opacity: 1;
+}

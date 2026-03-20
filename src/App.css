@@ -42,6 +42,7 @@
   top: 0;
   left: 0;
   right: 0;
+  z-index: 200;
 
   height: 56px;
   padding: 0 16px;
@@ -95,6 +96,35 @@
 .tt-header.is-active .tt-input:focus {
   outline: 2px solid #fff;
   outline-offset: 2px;
+}
+
+/* Nav buttons in header */
+.tt-nav-links {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.tt-nav-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  padding: 4px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tt-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tt-tap-hint {
+  opacity: 0.6;
+  font-size: 13px;
+  margin-left: 8px;
 }
 
 /* Push your content down so it doesn’t sit under the fixed header */
@@ -386,27 +416,27 @@ body			{font-size: 19px;}
   .crt::after {
     content: " ";
     display: block;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
-    right: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(18, 16, 16, 0.1);
     opacity: 0;
-    z-index: 2;
+    z-index: 101;
     pointer-events: none;
     animation: flicker 0.15s infinite;
   }
   .crt::before {
     content: " ";
     display: block;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
-    right: 0;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 2;
+    z-index: 100;
     background-size: 100% 2px, 3px 100%;
     pointer-events: none;
   }

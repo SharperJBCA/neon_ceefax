@@ -1,0 +1,108 @@
+.admin {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.admin__title {
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #c8c8c8;
+  padding-bottom: 12px;
+}
+
+.admin__loading {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.6;
+}
+
+.admin__error {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.admin__user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.admin__user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin__user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin__user-name {
+  font-size: 15px;
+}
+
+.admin__user-role {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+}
+
+.admin__user-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.admin__role-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 11px;
+  padding: 4px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.admin__role-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.admin__role-btn.is-active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+  color: #fff;
+  cursor: default;
+}
+
+.admin__role-btn:disabled {
+  cursor: default;
+}
+
+.admin__back {
+  background: none;
+  border: none;
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  opacity: 0.6;
+  padding: 0;
+}
+
+.admin__back:hover {
+  opacity: 1;
+}

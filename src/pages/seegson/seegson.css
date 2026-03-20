@@ -1,0 +1,572 @@
+@font-face {
+  font-family: 'inconsolata';
+  src: url('/inconsolata-regular-webfont.woff2') format('woff2'),
+       url('/inconsolata-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Shell layout (sidebar + content) ─────────────────────── */
+.seegson-shell {
+  --sg-yellow:     rgb(255, 195, 0);
+  --sg-yellow-dim: rgba(255, 195, 0, 0.35);
+  --sg-bg:         #000;
+
+  display: flex;
+  min-height: 100vh;
+  background: var(--sg-bg);
+  color: var(--sg-yellow);
+  font-family: 'inconsolata', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  user-select: none;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────── */
+.seegson-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  border-right: 3px solid var(--sg-yellow);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.seegson-sidebar__title {
+  padding: 14px 16px;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  border-bottom: 3px solid var(--sg-yellow);
+  text-align: center;
+}
+
+.seegson-sidebar__floor {
+  border-bottom: 1px solid var(--sg-yellow-dim);
+}
+
+.seegson-sidebar__floor-btn {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--sg-yellow-dim);
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.1s, background 0.1s;
+}
+
+.seegson-sidebar__floor-btn:hover {
+  color: var(--sg-yellow);
+  background: rgba(255, 195, 0, 0.05);
+}
+
+.seegson-sidebar__floor-btn.is-active {
+  color: var(--sg-yellow);
+  background: rgba(255, 195, 0, 0.1);
+}
+
+/* ── Content area ─────────────────────────────────────────── */
+.seegson-content {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.seegson-carousel {
+  touch-action: pan-y;
+}
+
+/* ── View indicator (dots + hint) ─────────────────────────── */
+.seegson-view-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 0;
+  margin-top: auto;
+  background: var(--sg-bg);
+  border-top: 1px solid var(--sg-yellow-dim);
+}
+
+.seegson-view-hint {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--sg-yellow-dim);
+}
+
+/* Show arrow-key hint on desktop (fine pointer), swipe hint on touch */
+.seegson-view-hint--desktop { display: block; }
+.seegson-view-hint--mobile  { display: none; }
+
+@media (pointer: coarse) {
+  .seegson-view-hint--desktop { display: none; }
+  .seegson-view-hint--mobile  { display: block; }
+}
+
+.seegson-view-dots {
+  display: flex;
+  gap: 12px;
+}
+
+.seegson-view-dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--sg-yellow-dim);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.seegson-view-dot.is-active {
+  background: var(--sg-yellow);
+  border-color: var(--sg-yellow);
+  box-shadow: 0 0 6px var(--sg-yellow);
+}
+
+/* ── Seegson base (shared by rewire + map views) ──────────── */
+.seegson {
+  --sg-yellow:     rgb(255, 195, 0);
+  --sg-yellow-dim: rgba(255, 195, 0, 0.35);
+  --sg-bg:         #000;
+
+  background:  var(--sg-bg);
+  color:       var(--sg-yellow);
+  font-family: 'inconsolata', monospace;
+  min-height:  100vh;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  user-select: none;
+}
+
+/* ── Title bar ─────────────────────────────────────────────── */
+.seegson__titlebar {
+  border-bottom: 3px solid var(--sg-yellow);
+  padding: 14px 28px;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+
+/* ── Room nav ──────────────────────────────────────────────── */
+.seegson__rooms {
+  display: flex;
+  border-bottom: 3px solid var(--sg-yellow);
+}
+
+.seegson__room-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--sg-yellow-dim);
+  color: var(--sg-yellow-dim);
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px 8px;
+  cursor: pointer;
+  transition: color 0.1s, background 0.1s;
+}
+
+.seegson__room-btn:last-child {
+  border-right: none;
+}
+
+.seegson__room-btn:hover {
+  color: var(--sg-yellow);
+  background: rgba(255, 195, 0, 0.05);
+}
+
+.seegson__room-btn.is-active {
+  color: var(--sg-yellow);
+  background: rgba(255, 195, 0, 0.1);
+}
+
+/* ── Current room heading ──────────────────────────────────── */
+.seegson__room-name {
+  font-size: clamp(40px, 7vw, 80px);
+  letter-spacing: 0.12em;
+  text-align: center;
+  padding: 40px 24px 32px;
+  border-bottom: 1px solid var(--sg-yellow-dim);
+}
+
+/* ── System grid ───────────────────────────────────────────── */
+.seegson__systems {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding: 40px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* ── Individual system ─────────────────────────────────────── */
+.seegson__system-btn {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 3px solid var(--sg-yellow);
+  color: var(--sg-yellow);
+  font-family: inherit;
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 36px 16px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.seegson__system-btn:hover {
+  background: rgba(255, 195, 0, 0.08);
+}
+
+.seegson__system-btn:active {
+  background: rgba(255, 195, 0, 0.18);
+}
+
+/* ── Status indicator ──────────────────────────────────────── */
+.seegson__status {
+  border: 3px solid var(--sg-yellow);
+  border-top: none;
+  color: var(--sg-yellow);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  padding: 8px 16px;
+  text-align: center;
+  background: transparent;
+  transition: background 0.15s, color 0.15s;
+}
+
+.seegson__status.is-active {
+  background: #fff;
+  color: #000;
+}
+
+/* ── Divider ───────────────────────────────────────────────── */
+.seegson__divider {
+  border-top: 3px dashed var(--sg-yellow);
+  max-width: 880px;
+  margin: 0 auto;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+@media (min-width: 921px) {
+  .seegson__divider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ── Resources bar ─────────────────────────────────────────── */
+.seegson__resources {
+  display: flex;
+  justify-content: space-between;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 28px 40px 40px;
+}
+
+.seegson__resource {
+  font-size: 16px;
+  letter-spacing: 0.14em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Flash lines (above and below the text) ────────────────── */
+.seegson__resource-lines {
+  width: 100%;
+  height: 3px;
+  background: transparent;
+}
+
+.seegson__resource.is-flashing .seegson__resource-lines {
+  background: var(--sg-yellow);
+  animation: sg-flash 0.8s step-end;
+}
+
+@keyframes sg-flash {
+  0%   { opacity: 1; }
+  12%  { opacity: 0; }
+  25%  { opacity: 1; }
+  37%  { opacity: 0; }
+  50%  { opacity: 1; }
+  62%  { opacity: 0; }
+  75%  { opacity: 1; }
+  87%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* ── Map view ──────────────────────────────────────────────── */
+.seegson-map {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 32px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.seegson-map__room {
+  border: 3px solid var(--sg-yellow);
+  padding: 20px;
+}
+
+.seegson-map__room-header {
+  font-size: 16px;
+  letter-spacing: 0.16em;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--sg-yellow-dim);
+  margin-bottom: 16px;
+}
+
+.seegson-map__systems {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.seegson-map__indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.seegson-map__dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--sg-yellow-dim);
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.seegson-map__indicator.is-active .seegson-map__dot {
+  background: var(--sg-yellow);
+  border-color: var(--sg-yellow);
+  box-shadow: 0 0 6px var(--sg-yellow), 0 0 12px rgba(255, 195, 0, 0.3);
+  animation: sg-pulse 2s ease-in-out infinite;
+}
+
+.seegson-map__label {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--sg-yellow-dim);
+}
+
+.seegson-map__indicator.is-active .seegson-map__label {
+  color: var(--sg-yellow);
+}
+
+.seegson-map__resources {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--sg-yellow-dim);
+  border-top: 1px solid var(--sg-yellow-dim);
+  padding-top: 12px;
+}
+
+/* ── New SVG Map View ──────────────────────────────────────── */
+.seegson-map__container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 91 / 201; /* Match the dull map's aspect ratio */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.seegson-map__base,
+.seegson-map__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.seegson-map__overlay {
+  pointer-events: none;
+}
+
+.seegson-map__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+img.seegson-map__svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.seegson-map__room-labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.seegson-map__system-label {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--sg-yellow);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--sg-yellow-dim);
+  transform-origin: left center;
+  white-space: nowrap;
+}
+
+.seegson-map__system-label.is-active {
+  background: rgba(255, 195, 0, 0.2);
+  color: var(--sg-yellow);
+  border-color: var(--sg-yellow);
+}
+
+.seegson-map__label-text {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.seegson-map__label-resources {
+  display: flex;
+  gap: 12px;
+  font-size: 10px;
+}
+
+.seegson-map__room-nav {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 20;
+}
+
+.seegson-map__room-btn {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--sg-yellow-dim);
+  color: var(--sg-yellow-dim);
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.seegson-map__room-btn:hover {
+  background: rgba(255, 195, 0, 0.1);
+  border-color: var(--sg-yellow);
+  color: var(--sg-yellow);
+}
+
+.seegson-map__room-btn.is-active {
+  background: rgba(255, 195, 0, 0.2);
+  border-color: var(--sg-yellow);
+  color: var(--sg-yellow);
+  box-shadow: 0 0 8px rgba(255, 195, 0, 0.3);
+}
+
+@keyframes sg-pulse {
+  0%, 100% { box-shadow: 0 0 6px var(--sg-yellow), 0 0 12px rgba(255, 195, 0, 0.3); }
+  50%      { box-shadow: 0 0 10px var(--sg-yellow), 0 0 20px rgba(255, 195, 0, 0.5); }
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .seegson-shell {
+    flex-direction: column;
+  }
+
+  .seegson-sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-right: none;
+    border-bottom: 3px solid var(--sg-yellow);
+  }
+
+  .seegson-sidebar__title {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 12px;
+    border-bottom: 1px solid var(--sg-yellow-dim);
+  }
+
+  .seegson-sidebar__floor {
+    flex: 1;
+    border-bottom: none;
+    border-right: 1px solid var(--sg-yellow-dim);
+    padding: 0;
+  }
+
+  .seegson-sidebar__floor:last-child {
+    border-right: none;
+  }
+
+  .seegson-sidebar__floor-btn {
+    padding: 10px 12px;
+    font-size: 11px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .seegson__systems {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .seegson__room-btn {
+    font-size: 11px;
+    padding: 12px 4px;
+    letter-spacing: 0.06em;
+  }
+
+  .seegson__resources {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .seegson__divider {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .seegson-map {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+}
