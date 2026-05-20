@@ -160,6 +160,12 @@
   letter-spacing: 0.1em;
 }
 
+.dash__signed-up-tag {
+  font-size: 11px;
+  color: #7cff7a;
+  letter-spacing: 0.1em;
+}
+
 .dash__action {
   background: none;
   border: 1px dashed rgba(255, 255, 255, 0.25);

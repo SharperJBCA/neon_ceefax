@@ -64,7 +64,7 @@ function GameListPage({ user, role, setPageCode }) {
               <div
                 key={g.id}
                 className={`games__card ${isFull ? "is-full" : ""}`}
-                onClick={() => setPageCode("gamesz.002")}
+                onClick={() => setPageCode(`gamesz.002.${g.id}`)}
               >
                 <div className="games__card-header">
                   <span className="games__card-title">{g.title}</span>

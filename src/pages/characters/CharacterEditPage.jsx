@@ -265,6 +265,10 @@ function StatsSection({ stats, setStat }) {
 function SkillPicker({ label, selected, onToggle }) {
   const [expanded, setExpanded] = useState(false);
 
+  // "Trained Skills" -> "trained_skills", "Expert Skills" -> "expert_skills", etc.
+  const skillListId = label.toLowerCase().replace(/ /g, "_");
+  const skillList = skills[skillListId] || [];
+
   return (
     <div className="chars__skill-picker">
       <button
@@ -277,15 +281,19 @@ function SkillPicker({ label, selected, onToggle }) {
       </button>
       {expanded && (
         <div className="chars__skill-grid">
-          {skills.map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              className={`chars__skill-chip ${selected.includes(s.id) ? "is-selected" : ""}`}
-              onClick={() => onToggle(s.id)}
-            >
-              {s.name}
-            </button>
+          {skillList.map((s) => (
+            <div key={s.id} className="chars__skill-chip-wrapper">
+              <button
+                type="button"
+                className={`chars__skill-chip ${selected.includes(s.id) ? "is-selected" : ""}`}
+                onClick={() => onToggle(s.id)}
+              >
+                {s.name}
+              </button>
+              {s.hover && (
+                <span className="chars__skill-tooltip">{s.hover}</span>
+              )}
+            </div>
           ))}
         </div>
       )}

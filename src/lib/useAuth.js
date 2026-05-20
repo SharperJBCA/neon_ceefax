@@ -5,6 +5,7 @@ export default function useAuth() {
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isRecovery, setIsRecovery] = useState(false);
 
   const fetchProfile = useCallback(async (userId) => {
     const { data, error } = await supabase
@@ -36,8 +37,11 @@ export default function useAuth() {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, s) => {
+    } = supabase.auth.onAuthStateChange((event, s) => {
       setSession(s);
+      if (event === "PASSWORD_RECOVERY") {
+        setIsRecovery(true);
+      }
       if (s?.user) {
         fetchProfile(s.user.id);
       } else {
@@ -73,14 +77,29 @@ export default function useAuth() {
     setProfile(null);
   }, []);
 
+  const resetPassword = useCallback(async (email) => {
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email);
+    return { data, error };
+  }, []);
+
+  const updatePassword = useCallback(async (newPassword) => {
+    const { data, error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+    return { data, error };
+  }, []);
+
   return {
     session,
     user: session?.user ?? null,
     profile,
     role: profile?.role ?? null,
     loading,
+    isRecovery,
     signUp,
     signIn,
     signOut,
+    resetPassword,
+    updatePassword,
   };
 }

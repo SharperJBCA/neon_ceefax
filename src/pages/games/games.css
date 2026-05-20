@@ -288,6 +288,30 @@
   margin-top: 16px;
 }
 
+.games__waitlist-notice {
+  font-size: 13px;
+  color: rgb(255, 195, 0);
+  border: 1px solid rgba(255, 195, 0, 0.3);
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+
+.games__signup-btn--waitlist {
+  border-color: rgb(255, 195, 0);
+  color: rgb(255, 195, 0);
+  background: rgba(255, 195, 0, 0.08);
+}
+
+.games__signup-btn--waitlist:hover {
+  background: rgba(255, 195, 0, 0.15);
+}
+
+.games__assign-mission {
+  margin-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 12px;
+}
+
 /* Inline delete on game cards */
 .games__delete-inline {
   margin-left: auto;

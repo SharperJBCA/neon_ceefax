@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
+import Typewriter from "../../components/Typewriter"
 import "./system.css";
 
 const container = {
@@ -25,6 +26,9 @@ function SystemPage({ pageCode, setPageCode }) {
   return (
     <section className="system-page">
       <div className="system-overview">
+
+        <Typewriter>Hello World</Typewriter>
+
         <motion.ul initial="hidden" animate="visible" variants={container}>
           {imagePaths.map((imagePath, i) => (
             <motion.li key={i} variants={item} transition={{ duration: 3 }}>

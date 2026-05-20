@@ -246,3 +246,154 @@
   opacity: 0.7;
   margin-bottom: 8px;
 }
+
+/* Mission Log */
+.missions__log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.missions__log-header:hover {
+  opacity: 0.85;
+}
+
+.missions__log-toggle {
+  font-size: 11px;
+  opacity: 0.4;
+  padding-top: 2px;
+}
+
+.missions__log-detail {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.missions__log-mission-desc {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.missions__log-game-desc {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.missions__log-date {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.missions__log-mission {
+  margin-left: 10px;
+  padding: 2px 8px;
+  border: 1px solid rgba(255, 195, 0, 0.4);
+  color: rgb(255, 195, 0);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.missions__log-crew {
+  margin-bottom: 10px;
+}
+
+.missions__log-crew-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.5;
+  margin-bottom: 4px;
+}
+
+.missions__log-crew-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 2px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.missions__log-crew-char {
+  opacity: 0.6;
+}
+
+.missions__log-aar {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 195, 0, 0.2);
+  background: rgba(255, 195, 0, 0.03);
+}
+
+.missions__log-aar-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.5;
+  margin-bottom: 6px;
+}
+
+.missions__log-aar-text {
+  font-size: 13px;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.missions__log-aar-edit {
+  margin-top: 10px;
+}
+
+.missions__log-aar-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 14px;
+  padding: 10px 12px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.missions__log-aar-textarea:focus {
+  outline: 2px solid #fff;
+  outline-offset: 1px;
+}
+
+.missions__log-aar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.missions__log-aar-actions .missions__submit {
+  width: auto;
+  padding: 8px 20px;
+  font-size: 12px;
+  margin-top: 0;
+}
+
+.missions__log-edit-btn {
+  margin-top: 8px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #c8c8c8;
+  font: inherit;
+  font-size: 11px;
+  padding: 4px 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+}
+
+.missions__log-edit-btn:hover {
+  opacity: 1;
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../lib/supabaseClient";
+import Typewriter from "../../components/Typewriter"
 import "./dashboard.css";
 
 function DashboardPage({ user, profile, role, signOut, setPageCode }) {
@@ -14,30 +15,41 @@ function DashboardPage({ user, profile, role, signOut, setPageCode }) {
 
   useEffect(() => {
     async function load() {
-      const [charRes, signupRes] = await Promise.all([
+      const [charRes, gamesRes, signupRes] = await Promise.all([
         supabase
           .from("characters")
           .select("id, name, class, is_dead, games_played")
           .eq("user_id", user.id)
           .order("created_at", { ascending: false }),
         supabase
+          .from("games")
+          .select("id, title, game_date, game_time, max_players, game_signups(count)")
+          .gte("game_date", new Date().toISOString().split("T")[0])
+          .order("game_date", { ascending: true }),
+        supabase
           .from("game_signups")
-          .select("position, games(id, title, game_date, game_time, max_players)")
-          .eq("user_id", user.id)
-          .gte("games.game_date", new Date().toISOString().split("T")[0])
-          .order("created_at", { ascending: true }),
+          .select("position, game_id, games(id, max_players)")
+          .eq("user_id", user.id),
       ]);
 
       if (charRes.data) setCharacters(charRes.data);
-      if (signupRes.data) {
-        const games = signupRes.data
-          .filter((s) => s.games)
-          .map((s) => ({
-            ...s.games,
-            position: s.position,
-            waitlisted: s.position > s.games.max_players,
-          }))
-          .sort((a, b) => a.game_date.localeCompare(b.game_date));
+      if (gamesRes.data) {
+        // Build a map of the user's signups by game_id
+        const mySignups = {};
+        if (signupRes.data) {
+          for (const s of signupRes.data) {
+            if (s.games) mySignups[s.game_id] = s;
+          }
+        }
+
+        const games = gamesRes.data.map((g) => {
+          const signup = mySignups[g.id];
+          return {
+            ...g,
+            signedUp: !!signup,
+            waitlisted: signup ? signup.position > g.max_players : false,
+          };
+        });
         setUpcomingGames(games);
       }
       setLoading(false);
@@ -45,13 +57,15 @@ function DashboardPage({ user, profile, role, signOut, setPageCode }) {
     load();
   }, [user.id]);
 
-  const nextGame = upcomingGames.find((g) => !g.waitlisted);
+  const nextGame = upcomingGames.find((g) => g.signedUp && !g.waitlisted);
 
   return (
     <div className="dash">
       <div className="dash__header">
         <div className="dash__welcome">
+          <Typewriter>
           Welcome, {profile?.display_name ?? "Crew Member"}
+          </Typewriter>
         </div>
         <div className="dash__role">Role: {role ?? "player"}</div>
         <button className="dash__signout" onClick={signOut}>
@@ -111,19 +125,24 @@ function DashboardPage({ user, profile, role, signOut, setPageCode }) {
               <div className="dash__empty">No upcoming games.</div>
             ) : (
               <div className="dash__game-list">
-                {upcomingGames.map((g) => (
-                  <button
-                    key={g.id}
-                    className={`dash__game ${g.waitlisted ? "is-waitlisted" : ""}`}
-                    onClick={() => setPageCode("gamesz.002")}
-                  >
-                    <span>{g.title}</span>
-                    <span>
-                      {g.game_date} @ {g.game_time}
-                    </span>
-                    {g.waitlisted && <span className="dash__waitlist-tag">WAITLIST</span>}
-                  </button>
-                ))}
+                {upcomingGames.map((g) => {
+                  const signupCount = g.game_signups?.[0]?.count ?? 0;
+                  return (
+                    <button
+                      key={g.id}
+                      className={`dash__game ${g.waitlisted ? "is-waitlisted" : ""}`}
+                      onClick={() => setPageCode("gamesz.002")}
+                    >
+                      <span>{g.title}</span>
+                      <span>
+                        {g.game_date} @ {g.game_time}
+                      </span>
+                      <span>{signupCount}/{g.max_players}</span>
+                      {g.signedUp && !g.waitlisted && <span className="dash__signed-up-tag">SIGNED UP</span>}
+                      {g.waitlisted && <span className="dash__waitlist-tag">WAITLIST</span>}
+                    </button>
+                  );
+                })}
               </div>
             )}
             <button
@@ -153,6 +172,11 @@ function DashboardPage({ user, profile, role, signOut, setPageCode }) {
             {(role === "admin" || role === "warden") && (
               <button onClick={() => setPageCode("gamesz.001")}>
                 Create Game
+              </button>
+            )}
+            {(role === "admin" || role === "warden") && (
+              <button onClick={() => setPageCode("missnz.001")}>
+                Create Mission
               </button>
             )}
             {role === "admin" && (

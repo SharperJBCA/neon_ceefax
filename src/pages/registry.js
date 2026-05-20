@@ -15,6 +15,8 @@ import admin from "./admin/registry";
 import missions from "./missions/registry";
 import bottle from "./bottle/registry";
 import ictomb from "./ictomb/registry";
+import meacrp from "./meacrp/registry";
+import moonlt from "./moonlt/registry";
 
 const registry = {
   ...landing,
@@ -34,6 +36,8 @@ const registry = {
   ...missions,
   ...bottle,
   ...ictomb,
+  ...meacrp,
+  ...moonlt,
 };
 
 export default registry;

@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import "./games.css";
 
-function GameDetailPage({ user, setPageCode }) {
+function GameDetailPage({ user, role, setPageCode, pageCode }) {
+  const requestedGameId = pageCode?.startsWith("gamesz.002.")
+    ? pageCode.slice("gamesz.002.".length)
+    : null;
+
   const [games, setGames] = useState([]);
   const [selectedGame, setSelectedGame] = useState(null);
   const [signups, setSignups] = useState([]);
@@ -11,11 +15,15 @@ function GameDetailPage({ user, setPageCode }) {
   const [loading, setLoading] = useState(true);
   const [actionBusy, setActionBusy] = useState(false);
   const [error, setError] = useState(null);
+  const [missionsList, setMissionsList] = useState([]);
+  const [missionBusy, setMissionBusy] = useState(false);
 
   if (!user) {
     setPageCode("authxx.000");
     return null;
   }
+
+  const isAdmin = role === "admin" || role === "warden";
 
   // Load upcoming games for selection
   useEffect(() => {
@@ -27,12 +35,30 @@ function GameDetailPage({ user, setPageCode }) {
         .order("game_date", { ascending: true });
       if (data) {
         setGames(data);
-        if (data.length > 0) setSelectedGame(data[0]);
+        if (data.length > 0) {
+          const match = requestedGameId
+            ? data.find((g) => g.id === requestedGameId)
+            : null;
+          setSelectedGame(match ?? data[0]);
+        }
       }
       setLoading(false);
     }
     load();
   }, []);
+
+  // Load missions list for admin/warden to assign
+  useEffect(() => {
+    if (!isAdmin) return;
+    async function loadMissions() {
+      const { data } = await supabase
+        .from("missions")
+        .select("id, title")
+        .order("created_at", { ascending: false });
+      if (data) setMissionsList(data);
+    }
+    loadMissions();
+  }, [isAdmin]);
 
   // Load signups + user's characters when game selected
   useEffect(() => {
@@ -64,6 +90,7 @@ function GameDetailPage({ user, setPageCode }) {
   const mySignup = signups.find((s) => s.user_id === user.id);
   const roster = signups.filter((s) => s.position <= (selectedGame?.max_players ?? 0));
   const waitlist = signups.filter((s) => s.position > (selectedGame?.max_players ?? 0));
+  const isFull = roster.length >= (selectedGame?.max_players ?? 0);
 
   async function handleSignup() {
     if (!selectedChar || !selectedGame) return;
@@ -109,6 +136,32 @@ function GameDetailPage({ user, setPageCode }) {
       if (data) setSignups(data);
     }
     setActionBusy(false);
+  }
+
+  async function handleAssignMission(newMissionId) {
+    setMissionBusy(true);
+    setError(null);
+
+    const { error: err } = await supabase
+      .from("games")
+      .update({ mission_id: newMissionId || null })
+      .eq("id", selectedGame.id);
+
+    if (err) {
+      setError(err.message);
+    } else {
+      // Refresh game data to get updated mission join
+      const { data } = await supabase
+        .from("games")
+        .select("*, missions(title, description, tags, page_codes)")
+        .eq("id", selectedGame.id)
+        .single();
+      if (data) {
+        setSelectedGame(data);
+        setGames((prev) => prev.map((g) => (g.id === data.id ? data : g)));
+      }
+    }
+    setMissionBusy(false);
   }
 
   if (loading) {
@@ -188,6 +241,26 @@ function GameDetailPage({ user, setPageCode }) {
                     )}
                   </div>
                 )}
+
+                {isAdmin && (
+                  <div className="games__assign-mission">
+                    <label className="games__field">
+                      <span>{selectedGame.missions ? "Change Mission" : "Assign Mission"}</span>
+                      <select
+                        value={selectedGame.mission_id ?? ""}
+                        onChange={(e) => handleAssignMission(e.target.value)}
+                        disabled={missionBusy}
+                      >
+                        <option value="">— No mission —</option>
+                        {missionsList.map((m) => (
+                          <option key={m.id} value={m.id}>
+                            {m.title}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+                )}
               </div>
 
               <div className="games__roster">
@@ -244,6 +317,11 @@ function GameDetailPage({ user, setPageCode }) {
                     </div>
                   ) : (
                     <>
+                      {isFull && (
+                        <div className="games__waitlist-notice">
+                          Roster is full — signing up will add you to the waitlist.
+                        </div>
+                      )}
                       <label className="games__field">
                         <span>Sign up with character</span>
                         <select
@@ -258,11 +336,11 @@ function GameDetailPage({ user, setPageCode }) {
                         </select>
                       </label>
                       <button
-                        className="games__signup-btn"
+                        className={`games__signup-btn${isFull ? " games__signup-btn--waitlist" : ""}`}
                         onClick={handleSignup}
                         disabled={actionBusy}
                       >
-                        {actionBusy ? "Signing up..." : "Sign Up"}
+                        {actionBusy ? "Signing up..." : isFull ? "Join Waitlist" : "Sign Up"}
                       </button>
                     </>
                   )}

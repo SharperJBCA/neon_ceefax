@@ -1,14 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Typewriter from "../../components/Typewriter"
 import "./auth.css";
 
-function AuthPage({ user, signIn, signUp, setPageCode }) {
-  const [mode, setMode] = useState("login"); // "login" | "signup"
+function AuthPage({ user, signIn, signUp, resetPassword, setPageCode }) {
+  const [mode, setMode] = useState("login"); // "login" | "signup" | "reset"
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
   const [busy, setBusy] = useState(false);
+  const [currentSloganIndex, setCurrentSloganIndex] = useState(0);
+
+  // Company slogans for cycling display
+  const companySlogans = [
+    "Capturing tomorrows history",
+    "Looking after our heritage",
+    "Uncovering Aegirs secrets",
+    "Holding power to account",
+    "Where truth matters"
+  ];
+
+  // Cycle through slogans every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSloganIndex(prev => (prev + 1) % companySlogans.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [companySlogans.length]);
 
   // If already logged in, redirect to dashboard
   if (user) {
@@ -22,7 +42,14 @@ function AuthPage({ user, signIn, signUp, setPageCode }) {
     setMessage(null);
     setBusy(true);
 
-    if (mode === "signup") {
+    if (mode === "reset") {
+      const { error: err } = await resetPassword(email);
+      if (err) {
+        setError(err.message);
+      } else {
+        setMessage("Password reset link sent — check your email.");
+      }
+    } else if (mode === "signup") {
       const { error: err } = await signUp(email, password, displayName);
       if (err) {
         setError(err.message);
@@ -42,9 +69,25 @@ function AuthPage({ user, signIn, signUp, setPageCode }) {
 
   return (
     <div className="auth-page">
+      {/* Hyper Media Corp Header — above the login box */}
+      {/* <div className="auth-page__company-header">
+        <h1 className="auth-page__company-title">
+          <Typewriter once>
+            Hyper Media Corp
+          </Typewriter>
+        </h1>
+        <p className="auth-page__company-slogan">
+          <Typewriter key={currentSloganIndex} speed={30} cursor>
+            {companySlogans[currentSloganIndex]}
+          </Typewriter>
+        </p>
+      </div> */}
+
       <div className="auth-page__container">
         <h1 className="auth-page__title">
-          {mode === "login" ? "Crew Login" : "Crew Registration"}
+          <Typewriter>
+          {mode === "login" ? "Crew Login" : mode === "signup" ? "Crew Registration" : "Password Reset"}
+          </Typewriter>
         </h1>
 
         <form className="auth-page__form" onSubmit={handleSubmit}>
@@ -72,17 +115,19 @@ function AuthPage({ user, signIn, signUp, setPageCode }) {
             />
           </label>
 
-          <label className="auth-page__field">
-            <span>Password</span>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              minLength={6}
-              autoComplete={mode === "signup" ? "new-password" : "current-password"}
-            />
-          </label>
+          {mode !== "reset" && (
+            <label className="auth-page__field">
+              <span>Password</span>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                minLength={6}
+                autoComplete={mode === "signup" ? "new-password" : "current-password"}
+              />
+            </label>
+          )}
 
           {error && <div className="auth-page__error">{error}</div>}
           {message && <div className="auth-page__message">{message}</div>}
@@ -92,9 +137,20 @@ function AuthPage({ user, signIn, signUp, setPageCode }) {
               ? "Processing..."
               : mode === "login"
                 ? "Sign In"
-                : "Create Account"}
+                : mode === "signup"
+                  ? "Create Account"
+                  : "Send Reset Link"}
           </button>
         </form>
+
+        {mode === "login" && (
+          <button
+            className="auth-page__toggle"
+            onClick={() => { setMode("reset"); setError(null); setMessage(null); }}
+          >
+            Forgot password?
+          </button>
+        )}
 
         <button
           className="auth-page__toggle"
