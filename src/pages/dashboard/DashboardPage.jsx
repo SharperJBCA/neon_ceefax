@@ -131,7 +131,7 @@ function DashboardPage({ user, profile, role, signOut, setPageCode }) {
                     <button
                       key={g.id}
                       className={`dash__game ${g.waitlisted ? "is-waitlisted" : ""}`}
-                      onClick={() => setPageCode("gamesz.002")}
+                      onClick={() => setPageCode(`gamesz.002.${g.id}`)}
                     >
                       <span>{g.title}</span>
                       <span>
